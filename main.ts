@@ -46,7 +46,7 @@ $eventForm.addEventListener('submit', (event: Event) => {
   const timeEvent = $formElements.timeEvent.value;
   const dayEvent = $formElements.dayEvent.value;
   const information = $formElements.information.value;
-  entryID++;
+
   const entry = {
     timeEvent,
     dayEvent,
@@ -55,8 +55,25 @@ $eventForm.addEventListener('submit', (event: Event) => {
   };
 
   entryArray.push(entry);
+  entryID++;
 
-  console.log('entry: ', entry);
   $dialogAdd.close();
   $eventForm.reset();
 });
+
+function render(entry: Entry): HTMLTableRowElement {
+  const $tableRow = document.createElement('tr');
+  const $timeEventData = document.createElement('td');
+  const $information = document.createElement('td');
+  const $actions = document.createElement('td');
+  const $edit = document.createElement('button');
+
+  $timeEventData.textContent = entry.timeEvent;
+  $information.textContent = entry.information;
+
+  $tableRow.appendChild($timeEventData);
+  $tableRow.appendChild($information);
+  $tableRow.appendChild($actions)
+
+  return $tableRow;
+}
