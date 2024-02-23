@@ -82,6 +82,7 @@ function render(entry: Entry): HTMLTableRowElement {
   $timeEventData.textContent = entry.timeEvent;
   $information.textContent = entry.information;
 
+
   $tableRow.appendChild($timeEventData);
   $tableRow.appendChild($information);
   $tableRow.appendChild($actions);
