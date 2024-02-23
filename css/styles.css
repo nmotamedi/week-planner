@@ -29,5 +29,5 @@ table tbody tr:nth-child(odd) {
 }
 
 .hidden {
-  display: none;
+  visibility: hidden;
 }

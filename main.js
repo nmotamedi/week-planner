@@ -75,8 +75,14 @@ $sortSelect.addEventListener('input', function (event) {
     //   }
     // }
     for (var i = 0; i < $tableRows.length; i++) {
-        if (targetValue !== $tableRows[i].dataset.day) {
-            $tableRows[i].setAttribute('class', 'hidden');
+        if (targetValue === "all") {
+            $tableRows[i].setAttribute('class', '');
+        }
+        else if (targetValue !== $tableRows[i].dataset.day) {
+            var $tds = $tableRows[i].querySelectorAll("td");
+            for (var i_1 = 0; i_1 < $tds.length; i_1++) {
+                $tds[i_1].setAttribute("class", "hidden");
+            }
         }
         else {
             $tableRows[i].setAttribute('class', '');

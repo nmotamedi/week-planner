@@ -64,7 +64,7 @@ $eventForm.addEventListener('submit', (event: Event) => {
   const $tableRows = $tableBody.querySelectorAll('tr');
   $tableBody.replaceChild($tableRow, $tableRows[entry.entryID - 1]);
 
-  
+
   entryArray.push(entry);
   entryID++;
 
@@ -109,8 +109,13 @@ $sortSelect.addEventListener('input', (event: Event) => {
   // }
 
   for (let i = 0; i < $tableRows.length; i++) {
-    if (targetValue !== $tableRows[i].dataset.day) {
-      $tableRows[i].setAttribute('class', 'hidden');
+    if (targetValue === "all") {
+      $tableRows[i].setAttribute('class', '');
+    } else if (targetValue !== $tableRows[i].dataset.day) {
+      const $tds = $tableRows[i].querySelectorAll("td") as NodeListOf<HTMLTableCellElement>;
+      for (let i=0; i < $tds.length; i++) {
+        $tds[i].setAttribute("class", "hidden");
+      }
     } else {
       $tableRows[i].setAttribute('class', '');
     }
