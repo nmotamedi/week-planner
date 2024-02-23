@@ -23,7 +23,7 @@ const entryArray: Entry[] = [];
 //   }
 const $eventForm = document.querySelector('#event-form') as HTMLFormElement;
 const $addNewEvent = document.querySelector('#add-event-button');
-const $sortSelect = document.querySelector('#day-select') as HTMLSelectElement;
+const $sortSelect = document.querySelector('#sort-select') as HTMLSelectElement;
 const $dialogAdd = document.querySelector('.dialog-add') as HTMLDialogElement;
 const $dismissModal = document.querySelector(
   '.dismiss-modal',
@@ -54,6 +54,14 @@ $eventForm.addEventListener('submit', (event: Event) => {
     entryID,
   };
 
+  const $tableRow = render(entry);
+  /*   console.log("$tableRow: ",$tableRow); */
+  const $tableBody = document.querySelector('table tbody');
+  if (!$tableBody) {
+    throw new Error('$tableBody query failed');
+  }
+  $tableBody.prepend($tableRow);
+
   entryArray.push(entry);
   entryID++;
 
@@ -67,13 +75,25 @@ function render(entry: Entry): HTMLTableRowElement {
   const $information = document.createElement('td');
   const $actions = document.createElement('td');
   const $edit = document.createElement('button');
+  const $delete = document.createElement('button');
+  $edit.textContent = 'edit';
+  $delete.textContent = 'delete';
 
   $timeEventData.textContent = entry.timeEvent;
   $information.textContent = entry.information;
 
   $tableRow.appendChild($timeEventData);
   $tableRow.appendChild($information);
-  $tableRow.appendChild($actions)
-
+  $tableRow.appendChild($actions);
+  $actions.append($edit);
+  $actions.append($delete);
   return $tableRow;
 }
+
+/* const $sortSelect.value; */
+$sortSelect.addEventListener("input",(event: Event)=>{
+  const $eventTarget=event.target as HTMLSelectElement;
+  const targetValue=$eventTarget.value;
+/*   console.log("targetValue", targetValue); */
+for(const ){}
+} )

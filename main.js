@@ -7,7 +7,7 @@ var entryArray = [];
 //   }
 var $eventForm = document.querySelector('#event-form');
 var $addNewEvent = document.querySelector('#add-event-button');
-var $sortSelect = document.querySelector('#day-select');
+var $sortSelect = document.querySelector('#sort-select');
 var $dialogAdd = document.querySelector('.dialog-add');
 var $dismissModal = document.querySelector('.dismiss-modal');
 var $submitModal = document.querySelector('.accept-modal');
@@ -23,15 +23,46 @@ $eventForm.addEventListener('submit', function (event) {
     var timeEvent = $formElements.timeEvent.value;
     var dayEvent = $formElements.dayEvent.value;
     var information = $formElements.information.value;
-    entryID++;
     var entry = {
         timeEvent: timeEvent,
         dayEvent: dayEvent,
         information: information,
         entryID: entryID,
     };
+    var $tableRow = render(entry);
+    /*   console.log("$tableRow: ",$tableRow); */
+    var $tableBody = document.querySelector('table tbody');
+    if (!$tableBody) {
+        throw new Error('$tableBody query failed');
+    }
+    $tableBody.prepend($tableRow);
     entryArray.push(entry);
-    console.log('entry: ', entry);
+    entryID++;
     $dialogAdd.close();
     $eventForm.reset();
+});
+function render(entry) {
+    var $tableRow = document.createElement('tr');
+    var $timeEventData = document.createElement('td');
+    var $information = document.createElement('td');
+    var $actions = document.createElement('td');
+    var $edit = document.createElement('button');
+    var $delete = document.createElement('button');
+    $edit.textContent = 'edit';
+    $delete.textContent = 'delete';
+    $timeEventData.textContent = entry.timeEvent;
+    $information.textContent = entry.information;
+    $tableRow.appendChild($timeEventData);
+    $tableRow.appendChild($information);
+    $tableRow.appendChild($actions);
+    $actions.append($edit);
+    $actions.append($delete);
+    return $tableRow;
+}
+/* const $sortSelect.value; */
+$sortSelect.addEventListener("input", function (event) {
+    var $eventTarget = event.target;
+    var targetValue = $eventTarget.value;
+    /*   console.log("targetValue", targetValue); */
+    for (var ;;) { }
 });
