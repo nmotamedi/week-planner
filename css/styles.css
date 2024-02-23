@@ -1,0 +1,30 @@
+.container {
+  min-width: 1000px;
+}
+
+.row{
+  display: flex;
+  justify-content: center;
+
+}
+
+.column-full {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.row .column-full table {
+  width: 80%;
+  height: 600px;
+  border: 1px solid red;
+}
+
+.row .column-full table tr {
+  height: 10px;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: rgb(197, 195, 195);
+}
