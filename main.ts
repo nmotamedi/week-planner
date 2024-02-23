@@ -60,8 +60,11 @@ $eventForm.addEventListener('submit', (event: Event) => {
   if (!$tableBody) {
     throw new Error('$tableBody query failed');
   }
-  $tableBody.prepend($tableRow);
+  /*   $tableBody.prepend($tableRow); */
+  const $tableRows = $tableBody.querySelectorAll('tr');
+  $tableBody.replaceChild($tableRow, $tableRows[entry.entryID - 1]);
 
+  
   entryArray.push(entry);
   entryID++;
 
@@ -83,7 +86,6 @@ function render(entry: Entry): HTMLTableRowElement {
   $timeEventData.textContent = entry.timeEvent;
   $information.textContent = entry.information;
 
-
   $tableRow.appendChild($timeEventData);
   $tableRow.appendChild($information);
   $tableRow.appendChild($actions);
@@ -93,21 +95,21 @@ function render(entry: Entry): HTMLTableRowElement {
 }
 
 /* const $sortSelect.value; */
-$sortSelect.addEventListener("input",(event: Event)=>{
-  const $eventTarget=event.target as HTMLSelectElement;
-  const targetValue=$eventTarget.value;
+$sortSelect.addEventListener('input', (event: Event) => {
+  const $eventTarget = event.target as HTMLSelectElement;
+  const targetValue = $eventTarget.value;
   const $tableBody = document.querySelector('table tbody');
-  const $tableRows = $tableBody.querySelectorAll("tr");
+  const $tableRows = $tableBody.querySelectorAll('tr');
 
-/*   console.log("targetValue", targetValue); */
-// for(let index = entryArray.length-1; index >= 0; index --){
-//   if (entryArray[index].dayEvent !== targetValue){
-//     $tableRows[$tableRows.length-index-1].classList.add("hidden");
-//   }
-// }
+  /*   console.log("targetValue", targetValue); */
+  // for(let index = entryArray.length-1; index >= 0; index --){
+  //   if (entryArray[index].dayEvent !== targetValue){
+  //     $tableRows[$tableRows.length-index-1].classList.add("hidden");
+  //   }
+  // }
 
   for (let i = 0; i < $tableRows.length; i++) {
-    if (targetValue !==$tableRows[i].dataset.day ) {
+    if (targetValue !== $tableRows[i].dataset.day) {
       $tableRows[i].setAttribute('class', 'hidden');
     } else {
       $tableRows[i].setAttribute('class', '');

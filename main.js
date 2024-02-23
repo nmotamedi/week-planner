@@ -35,7 +35,9 @@ $eventForm.addEventListener('submit', function (event) {
     if (!$tableBody) {
         throw new Error('$tableBody query failed');
     }
-    $tableBody.prepend($tableRow);
+    /*   $tableBody.prepend($tableRow); */
+    var $tableRows = $tableBody.querySelectorAll('tr');
+    $tableBody.replaceChild($tableRow, $tableRows[entry.entryID - 1]);
     entryArray.push(entry);
     entryID++;
     $dialogAdd.close();
@@ -61,11 +63,11 @@ function render(entry) {
     return $tableRow;
 }
 /* const $sortSelect.value; */
-$sortSelect.addEventListener("input", function (event) {
+$sortSelect.addEventListener('input', function (event) {
     var $eventTarget = event.target;
     var targetValue = $eventTarget.value;
     var $tableBody = document.querySelector('table tbody');
-    var $tableRows = $tableBody.querySelectorAll("tr");
+    var $tableRows = $tableBody.querySelectorAll('tr');
     /*   console.log("targetValue", targetValue); */
     // for(let index = entryArray.length-1; index >= 0; index --){
     //   if (entryArray[index].dayEvent !== targetValue){
