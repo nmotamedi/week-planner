@@ -94,6 +94,12 @@ function render(entry: Entry): HTMLTableRowElement {
 $sortSelect.addEventListener("input",(event: Event)=>{
   const $eventTarget=event.target as HTMLSelectElement;
   const targetValue=$eventTarget.value;
+  const $tableBody = document.querySelector('table tbody');
+  const $tableRows = $tableBody.querySelectorAll("tr");
 /*   console.log("targetValue", targetValue); */
-for(const ){}
+for(let index = entryArray.length-1; index >= 0; index --){
+  if (entryArray[index].dayEvent !== targetValue){
+    $tableRows[$tableRows.length-index-1].classList.add("hidden");
+  }
+}
 } )

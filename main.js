@@ -63,6 +63,12 @@ function render(entry) {
 $sortSelect.addEventListener("input", function (event) {
     var $eventTarget = event.target;
     var targetValue = $eventTarget.value;
+    var $tableBody = document.querySelector('table tbody');
+    var $tableRows = $tableBody.querySelectorAll("tr");
     /*   console.log("targetValue", targetValue); */
-    for (var ;;) { }
+    for (var index = entryArray.length - 1; index >= 0; index--) {
+        if (entryArray[index].dayEvent !== targetValue) {
+            $tableRows[$tableRows.length - index - 1].classList.add("hidden");
+        }
+    }
 });

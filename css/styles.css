@@ -2,10 +2,9 @@
   min-width: 1000px;
 }
 
-.row{
+.row {
   display: flex;
   justify-content: center;
-
 }
 
 .column-full {
@@ -21,10 +20,14 @@
   border: 1px solid red;
 }
 
+table tbody tr:nth-child(odd) {
+  background-color: rgb(197, 195, 195);
+}
+
 .row .column-full table tr {
   height: 10px;
 }
 
-table tbody tr:nth-child(odd) {
-  background-color: rgb(197, 195, 195);
+.hidden {
+  display: none;
 }
