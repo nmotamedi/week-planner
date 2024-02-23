@@ -43,6 +43,7 @@ $eventForm.addEventListener('submit', function (event) {
 });
 function render(entry) {
     var $tableRow = document.createElement('tr');
+    $tableRow.setAttribute('data-day', entry.dayEvent);
     var $timeEventData = document.createElement('td');
     var $information = document.createElement('td');
     var $actions = document.createElement('td');
@@ -66,9 +67,17 @@ $sortSelect.addEventListener("input", function (event) {
     var $tableBody = document.querySelector('table tbody');
     var $tableRows = $tableBody.querySelectorAll("tr");
     /*   console.log("targetValue", targetValue); */
-    for (var index = entryArray.length - 1; index >= 0; index--) {
-        if (entryArray[index].dayEvent !== targetValue) {
-            $tableRows[$tableRows.length - index - 1].classList.add("hidden");
+    // for(let index = entryArray.length-1; index >= 0; index --){
+    //   if (entryArray[index].dayEvent !== targetValue){
+    //     $tableRows[$tableRows.length-index-1].classList.add("hidden");
+    //   }
+    // }
+    for (var i = 0; i < $tableRows.length; i++) {
+        if (targetValue !== $tableRows[i].dataset.day) {
+            $tableRows[i].setAttribute('class', 'hidden');
+        }
+        else {
+            $tableRows[i].setAttribute('class', '');
         }
     }
 });

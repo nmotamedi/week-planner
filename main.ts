@@ -71,6 +71,7 @@ $eventForm.addEventListener('submit', (event: Event) => {
 
 function render(entry: Entry): HTMLTableRowElement {
   const $tableRow = document.createElement('tr');
+  $tableRow.setAttribute('data-day', entry.dayEvent);
   const $timeEventData = document.createElement('td');
   const $information = document.createElement('td');
   const $actions = document.createElement('td');
@@ -97,10 +98,19 @@ $sortSelect.addEventListener("input",(event: Event)=>{
   const targetValue=$eventTarget.value;
   const $tableBody = document.querySelector('table tbody');
   const $tableRows = $tableBody.querySelectorAll("tr");
+
 /*   console.log("targetValue", targetValue); */
-for(let index = entryArray.length-1; index >= 0; index --){
-  if (entryArray[index].dayEvent !== targetValue){
-    $tableRows[$tableRows.length-index-1].classList.add("hidden");
+// for(let index = entryArray.length-1; index >= 0; index --){
+//   if (entryArray[index].dayEvent !== targetValue){
+//     $tableRows[$tableRows.length-index-1].classList.add("hidden");
+//   }
+// }
+
+  for (let i = 0; i < $tableRows.length; i++) {
+    if (targetValue !==$tableRows[i].dataset.day ) {
+      $tableRows[i].setAttribute('class', 'hidden');
+    } else {
+      $tableRows[i].setAttribute('class', '');
+    }
   }
-}
-} )
+});
