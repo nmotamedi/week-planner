@@ -110,7 +110,10 @@ $sortSelect.addEventListener('input', (event: Event) => {
 
   for (let i = 0; i < $tableRows.length; i++) {
     const $tds = $tableRows[i].querySelectorAll("td") as NodeListOf<HTMLTableCellElement>;
+    $tableBody.classList.add("sort");
+
     if (targetValue === "all") {
+      $tableBody.classList.remove("sort");
       for (let j=0; j < $tds.length; j++) {
         $tds[j].setAttribute("class", "");
       }

@@ -33,5 +33,6 @@ table tbody tr:nth-child(odd) {
 }
 
 .hidden {
-  visibility: hidden;
+/*   visibility: hidden; */
+  display: none;
 }

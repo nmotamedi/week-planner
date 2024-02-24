@@ -76,7 +76,9 @@ $sortSelect.addEventListener('input', function (event) {
     // }
     for (var i = 0; i < $tableRows.length; i++) {
         var $tds = $tableRows[i].querySelectorAll("td");
+        $tableBody.classList.add("sort");
         if (targetValue === "all") {
+            $tableBody.classList.remove("sort");
             for (var j = 0; j < $tds.length; j++) {
                 $tds[j].setAttribute("class", "");
             }
