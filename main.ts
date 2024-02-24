@@ -109,15 +109,19 @@ $sortSelect.addEventListener('input', (event: Event) => {
   // }
 
   for (let i = 0; i < $tableRows.length; i++) {
+    const $tds = $tableRows[i].querySelectorAll("td") as NodeListOf<HTMLTableCellElement>;
     if (targetValue === "all") {
-      $tableRows[i].setAttribute('class', '');
+      for (let j=0; j < $tds.length; j++) {
+        $tds[j].setAttribute("class", "");
+      }
     } else if (targetValue !== $tableRows[i].dataset.day) {
-      const $tds = $tableRows[i].querySelectorAll("td") as NodeListOf<HTMLTableCellElement>;
-      for (let i=0; i < $tds.length; i++) {
-        $tds[i].setAttribute("class", "hidden");
+      for (let j=0; j < $tds.length; j++) {
+        $tds[j].setAttribute("class", "hidden");
       }
     } else {
-      $tableRows[i].setAttribute('class', '');
+      for (let j=0; j < $tds.length; j++) {
+        $tds[j].setAttribute("class", "");
+      }
     }
   }
 });
