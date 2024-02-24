@@ -33,6 +33,14 @@ table tbody tr:nth-child(odd) {
 }
 
 .hidden {
-/*   visibility: hidden; */
+  /*   visibility: hidden; */
   display: none;
+}
+
+#add-event-button,
+button {
+  margin: 1rem;
+  background-color: rgb(197, 195, 195);
+  border: solid black 1px;
+  border-radius: 5px;
 }

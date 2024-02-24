@@ -112,7 +112,7 @@ $sortSelect.addEventListener('input', (event: Event) => {
     const $tds = $tableRows[i].querySelectorAll("td") as NodeListOf<HTMLTableCellElement>;
     $tableBody.classList.add("sort");
 
-    if (targetValue === "all") {
+    if (targetValue === "all" || targetValue === $tableRows[i].dataset.day) {
       $tableBody.classList.remove("sort");
       for (let j=0; j < $tds.length; j++) {
         $tds[j].setAttribute("class", "");
@@ -120,10 +120,6 @@ $sortSelect.addEventListener('input', (event: Event) => {
     } else if (targetValue !== $tableRows[i].dataset.day) {
       for (let j=0; j < $tds.length; j++) {
         $tds[j].setAttribute("class", "hidden");
-      }
-    } else {
-      for (let j=0; j < $tds.length; j++) {
-        $tds[j].setAttribute("class", "");
       }
     }
   }

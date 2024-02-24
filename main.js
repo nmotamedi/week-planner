@@ -77,7 +77,7 @@ $sortSelect.addEventListener('input', function (event) {
     for (var i = 0; i < $tableRows.length; i++) {
         var $tds = $tableRows[i].querySelectorAll("td");
         $tableBody.classList.add("sort");
-        if (targetValue === "all") {
+        if (targetValue === "all" || targetValue === $tableRows[i].dataset.day) {
             $tableBody.classList.remove("sort");
             for (var j = 0; j < $tds.length; j++) {
                 $tds[j].setAttribute("class", "");
@@ -86,11 +86,6 @@ $sortSelect.addEventListener('input', function (event) {
         else if (targetValue !== $tableRows[i].dataset.day) {
             for (var j = 0; j < $tds.length; j++) {
                 $tds[j].setAttribute("class", "hidden");
-            }
-        }
-        else {
-            for (var j = 0; j < $tds.length; j++) {
-                $tds[j].setAttribute("class", "");
             }
         }
     }
